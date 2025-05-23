@@ -1,0 +1,5 @@
+transactionName,title,amount,on,username,date
+"Veggies","Food",2000,"budget","Varun","2024-10-01T14:30:00Z"
+"Tour","Vacation",2000,"saving","Varun","2024-10-02T14:30:00Z"
+"Hospital","Emergency Fund",3000,"saving","Varun","2024-10-02T14:30:00Z"
+"Income","Salary",10000,"others","Varun","2024-10-02T14:30:00Z"
