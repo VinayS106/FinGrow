@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Roboto";
+    padding-left: 2%;
+    padding-top: 0%;
+}
+
+.spanContent{
+    color:blue
+}

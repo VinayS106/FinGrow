@@ -1,0 +1,83 @@
+pipeline{
+    agent any
+    tools{
+        nodejs 'NodeJS'
+        dockerTool 'Docker'
+    }
+    environment{
+        registry='usha2645/fingrow-frontend-2'
+        docker_path = '/Applications/Docker.app/Contents/Resources/bin/docker'
+    }
+    stages{
+        stage('Check out code from github'){
+            steps{
+                checkout scmGit(branches: [[name: '*/fingrow-frontend-docker']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 
+'git@github.com:ushasri2645/fingrow-frontend.git']])
+                echo 'Code checked out from git.'
+            }
+            
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                        sh '${docker_path} pull node'
+                        sh "${docker_path} build -t ${registry} ."
+                }
+                 echo 'Image is built.'
+            }
+           
+        }
+        stage('Check the docker image'){
+            steps{
+                sh '${docker_path} images'
+                 echo 'Hope Image is present.'
+            }
+           
+        }
+        stage('Push the docker Image'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'docker-credential-desktop', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) 
+{
+                    sh '${docker_path} login -u ${USERNAME} -p ${PASSWORD}'
+                    sh '${docker_path} push ${registry}'
+                    echo 'LoggedIn successfully and pushed the image'
+                }
+            }
+            
+        }
+        stage('Delete the docker Image'){
+            steps{
+                sh '${docker_path} rmi ${registry}'
+                echo 'Image deleted'
+            }
+            
+        }
+        stage('Pull Image from docker hub'){
+            steps{
+                sh '${docker_path} pull ${registry}'
+                echo 'Image Pulled'
+            }
+            
+        }
+        stage('Delete the containers if there'){
+            steps{
+                sh '${docker_path} stop frontend-container || true'
+                sh '${docker_path} rm frontend-container || true'
+            }
+        }
+        stage('Run the image'){
+            steps{
+                sh '${docker_path} run -d --name frontend-container -p 3000:3000 ${registry}'
+                echo 'Container created'
+            }
+            
+        }
+        stage('Check whether container running or not'){
+            steps{
+                sh '${docker_path} ps'
+                echo 'Container may be there'
+            }
+        }
+        
+    }
+}

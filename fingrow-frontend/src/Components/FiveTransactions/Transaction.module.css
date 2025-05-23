@@ -1,0 +1,64 @@
+ .transactionsContainer{
+    margin-top: 20px;
+ }
+ .transaction {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 10px 0;
+    padding: 10px;
+    align-items: center; 
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content; 
+    box-shadow: 0.5px 0.5px 0.5px 0.5px lightsteelblue;
+}
+
+.icon {
+    display: flex;
+    background-color: lavender;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px; 
+}
+
+.details {
+    font-family: "Roboto";
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.leftSection p {
+    margin: 0;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.date{
+    color: gray;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: maroon;
+}

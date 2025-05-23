@@ -1,0 +1,65 @@
+.formContainer{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 3%;
+    padding: 20px 10px 20px 10px;
+    background-color: lavender;
+    border-radius: 10px;
+}
+
+input{
+    width: 150px;
+    height:30px;
+    margin: 10px 0px 10px 0px;
+    border:none;
+    border-radius: 4px;
+}
+
+::placeholder{
+    padding-left: 10px;
+    color:lightgray
+}
+
+.button{
+    color: white;
+    width:fit-content;
+    padding:5px 10px 5px 10px;
+    background-color: blue;
+    border:none;
+    border-radius: 4px;
+    text-align: center;
+    width:50%;
+    font-weight: bold;
+}
+.transactionFormContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+    background-color: lavender;
+    padding: 20px 10px 20px 10px;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  
+  .date{
+    color:gray
+  }
+  .tbutton {
+    align-self: center; 
+    justify-content: center;
+    color: white;
+    width:fit-content;
+    padding:5px 10px 5px 10px;
+    background-color: blue;
+    border:none;
+    border-radius: 4px;
+    text-align: center;
+    width:50%;
+    font-weight: bold;
+  }
+
